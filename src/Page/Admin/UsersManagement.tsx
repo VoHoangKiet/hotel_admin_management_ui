@@ -65,17 +65,17 @@ const UsersManagement = () => {
     },
     {
       title: 'Trạng thái',
-      dataIndex: 'role',
-      key: 'role',
-      render: (role: string, record: any) => (
+      dataIndex: 'state',
+      key: 'state',
+      render: (state: string, record: any) => (
         <Space>
-          <Tag color={role !== 'blocker' ? 'green' : 'red'}>{role !== 'blocker' ? 'Đang hoạt động' : 'Đã khóa'}</Tag>
-          {record.role !== 'admin' && (
-            <Tooltip title={role === 'blocker' ? 'Mở khóa tài khoản' : 'Khóa tài khoản'}>
+          <Tag color={state !== 'pending' ? 'green' : 'yellow'}>{state !== 'pending' ? 'Đã xác thực' : 'Chưa xác thực'}</Tag>
+          {record.state !== 'admin' && (
+            <Tooltip title={state === 'blocker' ? 'Mở khóa tài khoản' : 'Khóa tài khoản'}>
               <Button
                 type='text'
-                icon={role === 'blocker' ? <CheckCircleOutlined /> : <CloseCircleOutlined />}
-                onClick={() => (role === 'blocker' ? handleUnblockUser(record) : handleBlockUser(record))}
+                icon={state === 'blocker' ? <CheckCircleOutlined /> : <CloseCircleOutlined />}
+                onClick={() => (state === 'blocker' ? handleUnblockUser(record) : handleBlockUser(record))}
               />
             </Tooltip>
           )}

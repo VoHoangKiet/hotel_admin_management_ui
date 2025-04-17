@@ -30,7 +30,11 @@ export const useAdminStats = () => {
   return useQuery({
     queryKey: ['adminStats'],
     queryFn: async () => {
-      const response = await api.get('/admin/stats')
+      const response = await api.get('/admin/stats', {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      })
       return response.data.data as AdminStats
     }
   })

@@ -1,10 +1,13 @@
 import { Card, Table, Tag, Avatar, Space, Image, Rate } from 'antd'
-import { useHotels } from '../../hooks/admin/useHotels'
+import { Hotel, useHotels } from '../../hooks/admin/useHotels'
 import { format } from 'date-fns'
 import { vi } from 'date-fns/locale'
+import { useState } from 'react'
+import HotelDetailModal from '../../Components/modal/hotelDetailModal'
 
 const HotelsManagement = () => {
   const { hotels, isLoading } = useHotels()
+  const [selectedHotel, setSelectedHotel] = useState<Hotel | null>(null)
 
   const columns = [
     {
@@ -88,6 +91,13 @@ const HotelsManagement = () => {
       key: 'updatedAt',
       render: (date: string) => format(new Date(date), 'dd/MM/yyyy HH:mm', { locale: vi }),
     },
+    {
+      title: 'Hành động',
+      key: 'actions',
+      render: (_: any, record: Hotel) => (
+        <a onClick={() => setSelectedHotel(record)}>Xem chi tiết</a>
+      ),
+    },
   ]
 
   return (
@@ -118,6 +128,11 @@ const HotelsManagement = () => {
           className="[&_.ant-table-thead>tr>th]:bg-gray-50 [&_.ant-table-thead>tr>th]:text-gray-600 [&_.ant-table-thead>tr>th]:font-semibold [&_.ant-table-tbody>tr:hover]:bg-gray-50"
         />
       </Card>
+      <HotelDetailModal
+        open={!!selectedHotel}
+        hotel={selectedHotel}
+        onClose={() => setSelectedHotel(null)}
+      />
     </div>
   )
 }

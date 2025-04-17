@@ -2,6 +2,8 @@ const Logout = () => {
   const handleLogout = async () => {
     try {
       window.location.href = '/login'
+      localStorage.removeItem('user')
+      localStorage.removeItem('token')
     } catch (error) {
       console.log(error)
     }

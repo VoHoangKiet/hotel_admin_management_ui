@@ -5,11 +5,11 @@ import { MenuOutlined, UserOutlined } from '@ant-design/icons'
 import Logout from '../Logout'
 
 const InforHeader = () => {
-  const user = JSON.parse(localStorage.getItem('user') || '{}')
+  const user = JSON.parse(localStorage.getItem('user') as string)
 
   // popover
   const content = (
-    <div className='w-[200px]  bg-white    '>
+    <div className='w-[200px] bg-white'>
       {!user ? (
         <>
           <h3 className='text-lg font-semibold mb-2'>Chào mừng bạn!</h3>

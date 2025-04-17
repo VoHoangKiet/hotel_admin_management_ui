@@ -1,7 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
 import api from '../../api/api'
+import { Room } from '../room/useSearchRoom'
 
-interface User {
+export interface User {
   _id: string
   fullName: string
   email: string
@@ -15,7 +16,7 @@ interface User {
   id: string
 }
 
-interface Hotel {
+export interface Hotel {
   _id: string
   name: string
   address: string
@@ -25,7 +26,7 @@ interface Hotel {
   description: string
   longDescription: string
   type: string
-  rooms: string[]
+  rooms: Room[]
   amenities: string[]
   phoneNumber: string
   email: string

@@ -11,6 +11,8 @@ import Dashboard from '../Page/Admin'
 import UsersManagement from '../Page/Admin/UsersManagement'
 import HotelsManagement from '../Page/Admin/HotelsManagement'
 import OwnerRequestsManagement from '../Page/Admin/OwnerRequestsManagement'
+import OwnersManagement from '../Page/Admin/OwnersManagement'
+import BookingStatistics from '../Page/Admin/BookingStatisticsManagement'
 
 const RouterElement = () => {
   return (
@@ -40,10 +42,9 @@ const RouterElement = () => {
         <Route path='dashboard' element={<Dashboard />} />
         <Route path='users' element={<UsersManagement />} />
         <Route path='hotels' element={<HotelsManagement />} />
-        <Route path='rooms' element={<div>Rooms Management</div>} />
-        <Route path='revenue' element={<div>Revenue Management</div>} />
+        <Route path='revenue' element={<BookingStatistics/>} />
         <Route path='owner-requests' element={<OwnerRequestsManagement />} />
-        <Route path='owners' element={<div>Owners Management</div>} />
+        <Route path='owners' element={<OwnersManagement />} />
       </Route>
     </Routes>
   )
